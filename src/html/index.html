@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="sv">
+
+<head>
+    <title>RSS Reader</title>
+    <meta charset="UTF-8" />
+    <meta name="description" content="A simple RSS reader" />
+    <meta name="author" content="Johannes Seldevall" />
+    <link rel="stylesheet" type="text/css" href="../css/style.css" />
+</head>
+
+<body>
+    <header>
+        <h1>RSS Reader</h1>
+        <h2>Data</h2>
+        <p>The following pages displays the rss feeds in different formats. Json data is best displayed in Firefox.</p>
+        <ul id="pages">
+            <li><a href="../data/json" target="_blank">JSON</a></li>
+            <li><a href="../data/text" target="_blank">TEXT</a></li>
+            <li><a href="../data/html" target="_blank">HTML</a></li>
+        </ul>
+        <h2>Sorting</h2>
+        <p>Once you've sorted the data the sorting will remain until the webserver shuts down, if you sort the data here
+            the changes will be reflected in the json and plaintext pages.</p>
+        <ul id="sorting">
+            <li><a href="../sort=name_ascending">Name Ascending</a></li>
+            <li><a href="../sort=name_descending">Name Descending</a></li>
+            <li><a href="../sort=date_ascending">Date Ascending</a></li>
+            <li><a href="../sort=date_descending">Date Descending</a></li>
+        </ul>
+    </header>
+    <div class="news">
+        <% if(rss != null) { %>
+        <!-- loop through the existing RSS feeds -->
+        <% rss.forEach(function(feedRSS, index) { %>
+        <div id="index-<%= index %>" class="feed">
+            <!-- link and title on RSS feed -->
+            <a href="<%- feedRSS.link %>">
+                <h2><%- feedRSS.title %></h2>
+            </a>
+
+            <ul class="list">
+                <!-- loop through the items in a separate RSS feed -->
+                <% rss[index].items.forEach(function(itemRSS) { %>
+                <a href="<%- itemRSS.link %>" target="_blank">
+                    <li>
+                        <h3><%- itemRSS.title %></h3>
+                    </li>
+                </a>
+                <li>
+                    <p><%- itemRSS.content %></p>
+                </li>
+                <li>
+                    <p><%- itemRSS.pubDate %></p>
+                </li>
+                <% }) %>
+            </ul>
+        </div>
+        <% }) %>
+        <% } else { %>
+        No rss feeds found.
+        <% } %>
+    </div>
+</body>
+
+</html>

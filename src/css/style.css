@@ -1,0 +1,57 @@
+/* HTML */
+html {
+    color: rgb(55, 55, 55); /* text color */
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+header {
+    margin: 10px;
+}
+
+/* LINKS */
+a, a:visited {
+    text-decoration: none;
+    color: rgb(0, 44, 187)
+}
+
+a:hover {
+    text-decoration: underline;
+}
+
+/* LISTA */
+ul#pages, ul#sorting {
+    list-style-type: none;
+    padding: 0px;
+    margin: 0px;
+    display: inline-flex;
+}
+
+ul#pages li, ul#sorting li {
+    padding: 0px;
+    margin-right: 10px;
+}
+
+/* CLASSES */
+.news {
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.feed {
+    border: 2px solid rgb(202, 202, 202);
+    border-radius: 5px;
+
+    min-width: 20rem;
+    max-width: 29%;
+    margin: 10px;
+    padding: 20px;
+}
+
+.list {
+    list-style-type: none;
+    padding: 0px;
+    margin: 0px;
+
+    max-height: 30rem;
+    overflow-y: scroll;
+}
